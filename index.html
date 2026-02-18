@@ -8,100 +8,372 @@
   </head>
   <body>
     <main class="app">
-      <section class="calculator" aria-label="Calculator">
-        <div class="display" aria-live="polite">
-          <div class="display__input" id="expression">0</div>
-          <div class="display__result" id="result">0</div>
+      <header class="app__header">
+        <div class="app__title">Pro Calculator</div>
+        <div class="app__controls">
+          <label class="sr-only" for="themeSelect">Theme</label>
+          <select id="themeSelect" class="chip chip--select">
+            <option value="glass">Glass</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+          <button
+            class="chip"
+            id="sciToggle"
+            data-action="toggle-sci"
+            type="button"
+            aria-pressed="false"
+          >
+            Sci
+          </button>
+          <button
+            class="chip"
+            id="historyToggle"
+            data-action="toggle-history"
+            type="button"
+            aria-expanded="false"
+          >
+            History
+          </button>
+          <button
+            class="chip"
+            id="hintsToggle"
+            data-action="toggle-hints"
+            type="button"
+            aria-expanded="false"
+          >
+            Keys
+          </button>
+          <button
+            class="chip"
+            id="soundToggle"
+            data-action="toggle-sound"
+            type="button"
+            aria-pressed="false"
+          >
+            Sound
+          </button>
         </div>
-        <div class="keys" id="keys">
-          <button class="key key--utility" data-action="clear" type="button">
-            C
-          </button>
-          <button class="key key--utility" data-action="delete" type="button">
-            ⌫
-          </button>
-          <button
-            class="key key--operator"
-            data-action="operator"
-            data-value="/"
-            type="button"
-          >
-            ÷
-          </button>
-          <button
-            class="key key--operator"
-            data-action="operator"
-            data-value="*"
-            type="button"
-          >
-            ×
-          </button>
+      </header>
 
-          <button class="key" data-action="number" data-value="7" type="button">
-            7
-          </button>
-          <button class="key" data-action="number" data-value="8" type="button">
-            8
-          </button>
-          <button class="key" data-action="number" data-value="9" type="button">
-            9
-          </button>
-          <button
-            class="key key--operator"
-            data-action="operator"
-            data-value="-"
-            type="button"
-          >
-            −
-          </button>
+      <div class="layout">
+        <section class="calculator" aria-label="Calculator">
+          <div class="display" aria-live="polite" aria-atomic="true">
+            <div class="display__meta">
+              <span
+                class="display__memory"
+                id="memoryIndicator"
+                aria-hidden="true"
+              >
+                M
+              </span>
+              <span class="display__mode" id="modeIndicator">Standard</span>
+            </div>
+            <div class="display__input" id="expression">0</div>
+            <div class="display__result" id="result">0</div>
+          </div>
+          <div class="keys" id="keys">
+            <button
+              class="key key--memory"
+              data-action="memory-clear"
+              type="button"
+              aria-label="Memory clear"
+            >
+              MC
+            </button>
+            <button
+              class="key key--memory"
+              data-action="memory-recall"
+              type="button"
+              aria-label="Memory recall"
+            >
+              MR
+            </button>
+            <button
+              class="key key--memory"
+              data-action="memory-add"
+              type="button"
+              aria-label="Memory add"
+            >
+              M+
+            </button>
+            <button
+              class="key key--memory"
+              data-action="memory-subtract"
+              type="button"
+              aria-label="Memory subtract"
+            >
+              M-
+            </button>
 
-          <button class="key" data-action="number" data-value="4" type="button">
-            4
-          </button>
-          <button class="key" data-action="number" data-value="5" type="button">
-            5
-          </button>
-          <button class="key" data-action="number" data-value="6" type="button">
-            6
-          </button>
-          <button
-            class="key key--operator"
-            data-action="operator"
-            data-value="+"
-            type="button"
-          >
-            +
-          </button>
+            <button
+              class="key key--scientific"
+              data-action="sin"
+              type="button"
+              aria-label="Sine"
+            >
+              sin
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="cos"
+              type="button"
+              aria-label="Cosine"
+            >
+              cos
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="tan"
+              type="button"
+              aria-label="Tangent"
+            >
+              tan
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="pi"
+              type="button"
+              aria-label="Pi"
+            >
+              π
+            </button>
 
-          <button class="key" data-action="number" data-value="1" type="button">
-            1
-          </button>
-          <button class="key" data-action="number" data-value="2" type="button">
-            2
-          </button>
-          <button class="key" data-action="number" data-value="3" type="button">
-            3
-          </button>
-          <button
-            class="key key--equals"
-            data-action="equals"
-            type="button"
-          >
-            =
-          </button>
+            <button
+              class="key key--scientific"
+              data-action="sqrt"
+              type="button"
+              aria-label="Square root"
+            >
+              √
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="square"
+              type="button"
+              aria-label="Square"
+            >
+              x²
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="reciprocal"
+              type="button"
+              aria-label="Reciprocal"
+            >
+              1/x
+            </button>
+            <button
+              class="key key--scientific"
+              data-action="percent"
+              type="button"
+              aria-label="Percent"
+            >
+              %
+            </button>
 
-          <button
-            class="key key--zero"
-            data-action="number"
-            data-value="0"
-            type="button"
-          >
-            0
-          </button>
-          <button class="key" data-action="decimal" type="button">.</button>
-        </div>
-      </section>
+            <button class="key key--utility" data-action="clear" type="button">
+              C
+            </button>
+            <button
+              class="key key--utility"
+              data-action="delete"
+              type="button"
+              aria-label="Delete"
+            >
+              ⌫
+            </button>
+            <button
+              class="key key--operator"
+              data-action="operator"
+              data-value="/"
+              type="button"
+              aria-label="Divide"
+            >
+              ÷
+            </button>
+            <button
+              class="key key--operator"
+              data-action="operator"
+              data-value="*"
+              type="button"
+              aria-label="Multiply"
+            >
+              ×
+            </button>
+
+            <button class="key" data-action="number" data-value="7" type="button">
+              7
+            </button>
+            <button class="key" data-action="number" data-value="8" type="button">
+              8
+            </button>
+            <button class="key" data-action="number" data-value="9" type="button">
+              9
+            </button>
+            <button
+              class="key key--operator"
+              data-action="operator"
+              data-value="-"
+              type="button"
+              aria-label="Subtract"
+            >
+              −
+            </button>
+
+            <button class="key" data-action="number" data-value="4" type="button">
+              4
+            </button>
+            <button class="key" data-action="number" data-value="5" type="button">
+              5
+            </button>
+            <button class="key" data-action="number" data-value="6" type="button">
+              6
+            </button>
+            <button
+              class="key key--operator"
+              data-action="operator"
+              data-value="+"
+              type="button"
+              aria-label="Add"
+            >
+              +
+            </button>
+
+            <button class="key" data-action="number" data-value="1" type="button">
+              1
+            </button>
+            <button class="key" data-action="number" data-value="2" type="button">
+              2
+            </button>
+            <button class="key" data-action="number" data-value="3" type="button">
+              3
+            </button>
+            <button
+              class="key key--equals"
+              data-action="equals"
+              type="button"
+              aria-label="Equals"
+            >
+              =
+            </button>
+
+            <button
+              class="key key--zero"
+              data-action="number"
+              data-value="0"
+              type="button"
+            >
+              0
+            </button>
+            <button class="key" data-action="decimal" type="button">.</button>
+          </div>
+        </section>
+
+      </div>
     </main>
+
+    <div class="overlay" id="hintsOverlay" aria-hidden="true">
+      <div class="overlay__panel" role="dialog" aria-modal="true">
+        <div class="overlay__header">
+          <h2 class="overlay__title">Keyboard Shortcuts</h2>
+          <button class="chip chip--ghost" id="hintsClose" type="button">
+            Close
+          </button>
+        </div>
+        <div class="overlay__content">
+          <div class="hint-grid">
+            <div class="hint-item">
+              <span class="keycap">0-9</span>
+              <span>Numbers</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">+ - * /</span>
+              <span>Operators</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">Enter</span>
+              <span>Equals</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">Backspace</span>
+              <span>Delete</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">Esc</span>
+              <span>Clear</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">P</span>
+              <span>π</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">p</span>
+              <span>Percent</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">q</span>
+              <span>√</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">x</span>
+              <span>x²</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">i</span>
+              <span>1/x</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">s</span>
+              <span>sin</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">c</span>
+              <span>cos</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">t</span>
+              <span>tan</span>
+            </div>
+            <div class="hint-item">
+              <span class="keycap">?</span>
+              <span>Toggle help</span>
+            </div>
+            <div class="hint-item hint-note">
+              <span>Trig functions use degrees.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="historyOverlay" aria-hidden="true">
+      <div class="overlay__panel" role="dialog" aria-modal="true">
+        <div class="overlay__header">
+          <h2 class="overlay__title">History</h2>
+          <button class="chip chip--ghost" id="historyClose" type="button">
+            Close
+          </button>
+        </div>
+        <div class="history history--overlay" aria-label="History list">
+          <div class="history__header">
+            <h3 class="history__title">Recent calculations</h3>
+            <button
+              class="chip chip--ghost"
+              id="historyClear"
+              data-action="clear-history"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+          <div class="history__list" id="historyList" role="list"></div>
+          <p class="history__empty" id="historyEmpty">No calculations yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="engine.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
