@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Engine Tests</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="calculator" aria-label="Test Results">
+        <div class="display">
+          <div class="display__input">Engine Tests</div>
+          <div class="display__result" id="testSummary">Running…</div>
+        </div>
+        <div class="history" style="margin-top: 20px">
+          <div class="history__header">
+            <h2 class="history__title">Test Output</h2>
+          </div>
+          <div class="history__list" id="testResults"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="engine.js"></script>
+    <script src="tests.js"></script>
+  </body>
+</html>
