@@ -6,8 +6,10 @@ vanilla HTML, CSS, and JavaScript.
 
 ## Preview
 
-![Calculator preview](./preview.png)
-![Calculator preview (Sci)](./preview-sci.png)
+<img width="1859" height="895" alt="image" src="https://github.com/user-attachments/assets/23115693-dbe0-4d27-8d7e-ba85674d8943" />
+<img width="1766" height="872" alt="image" src="https://github.com/user-attachments/assets/91f64251-b11a-465d-847d-67a0b0bc6c52" />
+
+
 
 Open `index.html` in a browser to try it locally.
 
