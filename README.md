@@ -83,3 +83,4 @@ Open `tests.html` in the browser to run lightweight engine tests.
 
 - Theme, sound setting, and history are stored in `localStorage`.
 
+Note:This project is with coordination with CodeAlpha frontend development internship.
