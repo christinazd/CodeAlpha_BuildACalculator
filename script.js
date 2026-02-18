@@ -50,6 +50,13 @@ const readPrefs = () => {
 };
 
 const prefs = readPrefs();
+const urlParams = new URLSearchParams(window.location.search);
+const sciOverride = urlParams.get("sci");
+const hasSciOverride = sciOverride !== null;
+
+if (hasSciOverride) {
+  prefs.sciMode = sciOverride === "1" || sciOverride === "true";
+}
 
 let expression = "";
 let errorState = false;
@@ -76,14 +83,16 @@ const applyTheme = (theme) => {
   savePrefs();
 };
 
-const applyScientificMode = (enabled) => {
+const applyScientificMode = (enabled, persist = true) => {
   document.body.classList.toggle("is-scientific", enabled);
   setToggleState(sciToggleEl, enabled);
   if (modeIndicatorEl) {
     modeIndicatorEl.textContent = enabled ? "Scientific" : "Standard";
   }
   prefs.sciMode = enabled;
-  savePrefs();
+  if (persist) {
+    savePrefs();
+  }
 };
 
 const applySound = (enabled) => {
@@ -689,7 +698,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 applyTheme(prefs.theme);
-applyScientificMode(prefs.sciMode);
+applyScientificMode(prefs.sciMode, !hasSciOverride);
 applySound(prefs.sound);
 history = loadHistory();
 renderHistory();
